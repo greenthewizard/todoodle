@@ -1,3 +1,4 @@
 import './styles/style.scss';
+import task from './js/todo.js'
 
-console.log('All good!');
+let item = task('test', 'desc');

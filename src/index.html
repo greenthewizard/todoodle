@@ -2,8 +2,31 @@
 <html>
 <head>
 	<title>Todo List</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 </head>
 <body>
-	<p>All good!</p>
+	<div id="container">
+		<header>
+			<h1>todoodle</h1>
+		</header>
+		<section id="list-area">
+			<ul id="todo-list">
+				<li class="project">
+						<img src="img/edit.svg" alt="pencil" class="edit-icon">
+						<img src="img/arrow.svg" alt="arrow down" class="expand-icon">
+						<label for="todo-item1">Groceries</label>
+						<img src="img/clock.svg" alt="clock" class="time-icon">
+						<img src="img/bulb.svg" alt="bulb" class="priority-icon">			
+				</li>
+				<li class="task">
+					<img src="img/edit.svg" alt="pencil" class="edit-icon">
+					<input type="checkbox" id="todo-item2" name="todo-item">
+					<label for="todo-item2">Get Milk</label>
+					<img src="img/clock.svg" alt="clock" class="time-icon">
+					<img src="img/bulb.svg" alt="bulb" class="priority-icon">					
+				</li>
+			</ul>
+		</section>
+	</div>
 </body>
 </html>

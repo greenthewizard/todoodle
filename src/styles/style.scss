@@ -1,0 +1,54 @@
+html {
+	font-size: 10px;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: #e9e9e9;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #111;
+	color: #e9e9e9;
+	border-bottom: 3px solid white;
+	padding: 1rem 0;
+
+	h1 {
+		margin: 0;
+		text-indent: 1em;
+	}
+}
+
+#todo-list {
+	padding: 0 2rem;
+	font-size: 1.5rem;
+	li {
+		display: grid;
+		grid-template-columns: 2rem auto 1fr 2rem 2rem;
+		grid-gap: 1rem;
+		width: 60vw;
+		max-width: 50rem;
+		padding: .5rem 0;
+		input {
+			margin: 0;
+			height: 2rem;
+		}
+	}
+
+	.project {
+		font-weight: bold;
+	}
+
+	.task {
+		grid-template-columns: 2rem 2rem auto 1fr 2rem 2rem;
+		input {
+			grid-column-start: 3;
+		}
+	}
+}
+
+.edit-icon {
+	width: 2rem;
+}
