@@ -1,7 +1,15 @@
 import './styles/style.scss';
 import * as taskFactory from './js/taskFactory.js'
 
-let task = taskFactory.createTask('test123', 'hey');
-console.log(task.getTitle());
+let taskA = taskFactory.createTask('testA', 'hey');
+let taskB = taskFactory.createTask('testB', 'hey');
+let taskC = taskFactory.createTask('testC', 'hey');
 
-task.setTitle('test456');
+taskA.setParent(taskB);
+taskB.setParent(taskC);
+
+console.log(`${taskA.getTitle()}'s parent is: ${taskA.getParent().getTitle()}`);
+console.log(`${taskB.getTitle()}'s parent is: ${taskB.getParent().getTitle()}`);
+
+taskC.setParent(taskA);
+taskA.setParent(taskA);
