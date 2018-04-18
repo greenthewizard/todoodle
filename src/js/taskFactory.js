@@ -5,7 +5,7 @@ let _nextId = 0;
 let _allTasks = [];
 
 //Exports
-const createTask = (title = 'New Task', desc = '') => {
+export const createTask = (title = 'New Task', desc = '') => {
     const due = null;
     const tasks = [];
     const id = _nextId++;
@@ -19,36 +19,35 @@ const createTask = (title = 'New Task', desc = '') => {
                 title = newTitle;
             }
         },
-
-        getTitle: () => {
-            return title;
-        },
-
+        
+        //add 1 to priority, not exceeding
         incPriority: () => {
-            priority = priority + 1;
-            if (priority > maxPriority) {
-                priority = 0;
-            }
+            priority = priority + 1 > maxPriority ? priority : priority + 1;
         },
 
-        getPriority: () => {
-            return priority;
+        decPriority: () => {
+            priority = priority - 1 >= 0 ? priority : priority - 1;
         },
 
-        getId: () => {
-            return id;
-        }
+        addChild: (task) => {
+            tasks.push(task);
+        },
+
+        removeChild: (task) => {
+            const child = tasks.splice(tasks.indexOf(task), 1);
+            return child;
+        },
+        
+        getTitle: () => title,
+        getPriority: () => priority,
+        getId: () => id
     }
 
+    //Add task to master list.
     _allTasks.push(newTask);
     return newTask;
 }
 
-const getTaskById = (id) => {
-    return _allTasks.find(task => task.getId() === id );
+export const getTaskById = (id) => {
+    return _allTasks.find(task => task.id === id );
 };
-
-export { 
-    createTask,
-    getTaskById
-}
