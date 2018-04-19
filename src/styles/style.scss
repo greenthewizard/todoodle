@@ -1,9 +1,12 @@
+$light-grey: #bbb;
+
 html {
 	font-size: 10px;
 }
 
 body {
 	font-family: sans-serif;
+	color: #111;
 	background-color: #e9e9e9;
 	margin: 0;
 	padding: 0;
@@ -18,15 +21,18 @@ header {
 	h1 {
 		margin: 0;
 		text-indent: 1em;
+		font-size: 3.5rem;
 	}
 }
 
 #todo-list {
+	$fontsize: 2.5rem;
+
 	padding: 0 2rem;
-	font-size: 1.5rem;
+	font-size: $fontsize;
 	li {
 		display: grid;
-		grid-template-columns: 2rem auto 1fr 2rem 2rem;
+		grid-template-columns: $fontsize auto 1fr $fontsize $fontsize;
 		grid-gap: 1rem;
 		width: 60vw;
 		max-width: 50rem;
@@ -34,7 +40,11 @@ header {
 		padding: .5rem 0;
 		input {
 			margin: 0;
-			height: 2rem;
+			height: $fontsize;
+		}
+
+		.edit-btn, .due-btn, .priority-btn, .incomplete {
+			color: $light-grey
 		}
 	}
 
@@ -43,8 +53,8 @@ header {
 	}
 
 	.task {
-		grid-template-columns: 2rem 2rem auto 1fr 2rem 2rem;
-		input {
+		grid-template-columns: $fontsize $fontsize auto 1fr $fontsize $fontsize;
+		.checkmark {
 			grid-column-start: 3;
 		}
 	}

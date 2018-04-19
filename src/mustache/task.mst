@@ -1,0 +1,7 @@
+<li class="task project">
+    <i class="far fa-edit edit-btn"></i>
+    <i class="fas fa-angle-down"></i>
+    <label for="todo-item1">Groceries</label>
+    <i class="far fa-clock due-btn"></i>
+    <i class="far fa-lightbulb priority-btn"></i>
+</li
