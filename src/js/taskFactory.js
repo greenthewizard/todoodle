@@ -31,6 +31,7 @@ export const createTask = (title = 'New Task', desc = '') => {
     const id = _nextId++;
     const due = null;
     let priority = 0;
+    let sort = 0;
     let collapse = false;
     let parent = null;
 
@@ -83,4 +84,38 @@ export const createTask = (title = 'New Task', desc = '') => {
 
 export const getTaskById = (id) => {
     return _allTasks.find(task => task.id === id );
+};
+
+export const getChildrenFor = (parent) => {
+    return _allTasks.filter(task => {
+        let taskParent = task.getParent();
+        if (taskParent) {
+            return task.getParent().getId() === parent.getId();
+        } else {
+            return false;
+        }
+    });
+};
+
+export const getGenerationOf = (task) => {
+    let gen = 0;
+    while (task = task.getParent()) {
+        gen++;
+    }
+    return gen;
+};
+
+export const getSortedTasks = (children) => {
+    let sortedList = [];
+    //If children not provided, set to gen zero. (parent = null).
+    children = children ? children : _allTasks.filter(task => !task.getParent());
+    if (children.length > 0) {
+        //For each child, add child to list, followed by a list of its own children with their children etc., etc., etc..
+        children.forEach(child => {
+            sortedList.push(child, ...getSortedTasks(getChildrenFor(child)));
+        });
+    } else {
+        return [];
+    }
+    return sortedList;
 };
