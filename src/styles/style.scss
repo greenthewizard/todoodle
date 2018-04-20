@@ -26,37 +26,45 @@ header {
 }
 
 #todo-list {
-	$fontsize: 2.5rem;
-
+	$fontsize: 1.7rem;
+	list-style: none;
 	padding: 0 2rem;
-	font-size: $fontsize;
+
 	li {
-		display: grid;
-		grid-template-columns: $fontsize auto 1fr $fontsize $fontsize;
-		grid-gap: 1rem;
 		width: 60vw;
 		max-width: 50rem;
 		min-width: 30rem;
 		padding: .5rem 0;
-		input {
-			margin: 0;
-			height: $fontsize;
+
+		.task-container {
+			display: flex;
+		}
+
+		.icon {
+			padding: 0 0.2em;
+			width: $fontsize + .4;
+			font-size: $fontsize + .4;
 		}
 
 		.edit-btn, .due-btn, .priority-btn, .incomplete {
 			color: $light-grey
 		}
+
+		.checkmark-btn {
+			font-size: $fontsize - .1;
+		}
+
+		.task-body {
+			flex-grow: 1;
+
+			label {
+				font-size: $fontsize;
+			}
+		}
 	}
 
 	.project {
 		font-weight: bold;
-	}
-
-	.task {
-		grid-template-columns: $fontsize $fontsize auto 1fr $fontsize $fontsize;
-		.checkmark {
-			grid-column-start: 3;
-		}
 	}
 }
 

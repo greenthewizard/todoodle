@@ -1,0 +1,18 @@
+{{#tasks}}
+    <li>
+        <span class="task-container">
+            <i class="far fa-edit edit-btn icon"></i>
+            <span class="task-body" style="padding-left: {{getIndent}}">
+                {{#hasChildren}}
+                    <i class="fas fa-angle-down collapse-btn icon"></i>
+                {{/hasChildren}}
+                {{^hasChildren}}
+                    <i class="fas fa-check incomplete checkmark-btn icon"></i>
+                {{/hasChildren}}
+                <label>{{getTitle}}</label>
+            </span>
+            <i class="far fa-clock due-btn icon"></i>
+            <i class="far fa-lightbulb priority-btn icon"></i>
+        </span>
+    </li>
+{{/tasks}}
