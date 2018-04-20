@@ -4,4 +4,4 @@
     <label for="todo-item1">Groceries</label>
     <i class="far fa-clock due-btn"></i>
     <i class="far fa-lightbulb priority-btn"></i>
-</li
+</li>

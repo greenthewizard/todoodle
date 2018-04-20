@@ -1,6 +1,6 @@
 import './js/styleBarrel.js';
 import * as taskFactory from './js/taskFactory.js';
-import * as render from './js/render.js';
+import render from './js/render.js';
 
 let task1 = taskFactory.createTask('task1', 'hey');
 let task2 = taskFactory.createTask('task2', 'hey');
@@ -19,7 +19,7 @@ task8.setParent(task5);
 
 let sorted = taskFactory.getSortedTasks();
 sorted.forEach(task => {
-    let dash = '=='
+    let dash = '='
     let dashes = dash.repeat(taskFactory.getGenerationOf(task));
     console.log(dashes + task.getTitle());
 });
