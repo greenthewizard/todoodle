@@ -1,7 +1,7 @@
 import * as mustache from 'mustache';
 
 export default function render($node, template, view = {}) {
-    fetch(template)
+    return fetch(template)
         .then(function(response) {
             return response.text();
         })

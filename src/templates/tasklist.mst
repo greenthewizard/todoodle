@@ -1,18 +1,18 @@
 {{#tasks}}
     <li>
         <span class="task-container">
-            <i class="far fa-edit edit-btn icon"></i>
+            <a href="#" class="edit-btn"><i class="far fa-edit icon"></i></a>
             <span class="task-body" style="padding-left: {{getIndent}}">
                 {{#hasChildren}}
-                    <i class="fas fa-angle-down collapse-btn icon"></i>
+                    <a href="#" class="collapse-btn"><i class="fas fa-angle-down icon"></i></a>
                 {{/hasChildren}}
                 {{^hasChildren}}
-                    <i class="fas fa-check incomplete checkmark-btn icon"></i>
+                    <a href="#" class="complete-btn"><i class="fas fa-check incomplete icon"></i></a>
                 {{/hasChildren}}
                 <label>{{getTitle}}</label>
             </span>
-            <i class="far fa-clock due-btn icon"></i>
-            <i class="far fa-lightbulb priority-btn icon"></i>
+            <a href="#" class="due-btn"><i class="far fa-clock icon"></i></a>
+            <a href="#" class="priority-btn"><i class="far fa-lightbulb icon"></i></a>
         </span>
     </li>
 {{/tasks}}

@@ -2,6 +2,8 @@ import './js/styleBarrel.js';
 import * as taskFactory from './js/taskFactory.js';
 import render from './js/render.js';
 
+import * as evManager from './js/eventManager.js';
+
 let task1 = taskFactory.createTask('Finish todo app');
     let task4 = taskFactory.createTask('Make the rest of the app');
     let task5 = taskFactory.createTask('Learn how to make the rest of the app');
@@ -17,6 +19,10 @@ task6.setParent(task2);
 task7.setParent(task5);
 task8.setParent(task5);
 
+evManager.newListener(".edit-btn", 'click', e => {
+    console.log('edit');
+});
+
 let view = {
     tasks: taskFactory.getSortedTasks(),
     hasChildren: function() {
@@ -28,4 +34,5 @@ let view = {
 }
 
 let $ul = document.querySelector('#todo-list');
-render($ul, 'templates/tasklist.mst', view);
+render($ul, 'templates/tasklist.mst', view)
+    .then(() => evManager.attachListeners());

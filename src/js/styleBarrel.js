@@ -6,6 +6,7 @@ import faLightbulb from '@fortawesome/fontawesome-free-regular';
 import faCheck from '@fortawesome/fontawesome-free-solid';
 import faAngleDown from '@fortawesome/fontawesome-free-solid';
 import faAngleRight from '@fortawesome/fontawesome-free-solid';
+import faPlusCircle from '@fortawesome/fontawesome-free-solid';
 
 fontawesome.library.add(
     faEdit,
@@ -13,5 +14,6 @@ fontawesome.library.add(
     faAngleDown,
     faAngleRight,
     faClock,
-    faLightbulb
+    faLightbulb,
+    faPlusCircle
 );
