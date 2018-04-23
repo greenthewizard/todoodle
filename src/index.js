@@ -1,8 +1,10 @@
 import './js/styleBarrel.js';
 import * as taskFactory from './js/taskFactory.js';
+import * as evManager from './js/eventManager.js';
 import render from './js/render.js';
 
-import * as evManager from './js/eventManager.js';
+let $editBox = document.querySelector('#title-edit-box');
+let swapping = false;
 
 let task1 = taskFactory.createTask('Finish todo app');
     let task4 = taskFactory.createTask('Make the rest of the app');
@@ -19,8 +21,35 @@ task6.setParent(task2);
 task7.setParent(task5);
 task8.setParent(task5);
 
-evManager.newListener(".edit-btn", 'click', e => {
-    console.log('edit');
+evManager.newListener('#list-area', 'mouseover', e => {
+    if (e.target.classList.contains('task-label')) {
+        //Cache DOM
+        let $label = e.target;
+        let $taskBody = $label.parentNode;
+        let $prevTaskBody = document.querySelector('.editing');
+        let $prevDisplaced = document.querySelector('.displaced');
+
+        //Remove editing class from previous task.
+        if($prevTaskBody) {
+            $prevTaskBody.classList.remove('editing');
+        }
+        //Give class to task being hovered
+        $taskBody.classList.add('editing');
+        //Stick label somewhere else.
+        document.querySelector('body').appendChild($label);
+        //Replace with input
+        $taskBody.appendChild($editBox);
+        //If task label is displaced, replace into previous task body and remove class.
+        if ($prevDisplaced) {
+            $prevTaskBody.appendChild($prevDisplaced);
+            $prevDisplaced.classList.remove('displaced');
+        }
+
+        //Give class to newly displaced label.
+        $label.classList.add('displaced');
+
+        $editBox.value = $label.firstChild.textContent;
+    }
 });
 
 let view = {

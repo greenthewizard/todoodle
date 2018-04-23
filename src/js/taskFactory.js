@@ -38,7 +38,7 @@ export const createTask = (title = 'New Task', desc = '') => {
     const thisTask = {
         setTitle: (newTitle) => {
             //Title must contain one more more alphanumeric characters.
-            if (/\w+/.test(newTitle) && typeof newTitle === "string") {
+            if (/\w*/.test(newTitle) && typeof newTitle === "string") {
                 title = newTitle;
             }
             return thisTask;

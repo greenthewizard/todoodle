@@ -37,35 +37,38 @@ header {
 #todo-list {
 	list-style: none;
 	padding: 0;
-
+	
 	li {
 		padding: .5rem 0;
-
+		
 		.task-container {
 			display: flex;
 		}
-
+		
 		.icon {
-			padding: 0 0.05rem;
+			padding: 0 0.3rem;
 			width: $fontsize + .4;
 			font-size: $fontsize + .4;
 		}
-
+		
 		.edit-btn, .due-btn, .priority-btn, .incomplete {
 			color: $light-grey
 		}
-
+		
 		.complete-btn {
 			font-size: $fontsize - .1;
 		}
-
+		
 		.collapse-btn {
 			color: black;
 		}
-
+		
 		.task-body {
 			flex-grow: 1;
-
+			display: flex;
+			align-items: center;
+			line-height: $fontsize;
+			
 			label {
 				font-size: $fontsize;
 			}
@@ -97,4 +100,17 @@ header {
 
 .edit-icon {
 	width: 2rem;
+}
+
+#title-edit-box {
+	flex-grow: 1;
+	font-size: $fontsize;
+	background: none;
+	border: none;
+	padding: 0;
+	line-height: $fontsize;
+}
+
+.displaced {
+	display: none;
 }
