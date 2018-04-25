@@ -1,10 +1,11 @@
-import './js/styleBarrel.js';
+import './js/styles.js';
 import * as taskFactory from './js/taskFactory.js';
 import * as evManager from './js/eventManager.js';
+import { nodeListToArray } from './js/helpers.js';
 import render from './js/render.js';
 
-let $editBox = document.querySelector('#title-edit-box');
-let swapping = false;
+let $newInput = null;
+let $listArea = document.querySelector('#list-area');
 
 let task1 = taskFactory.createTask('Finish todo app');
     let task4 = taskFactory.createTask('Make the rest of the app');
@@ -21,34 +22,42 @@ task6.setParent(task2);
 task7.setParent(task5);
 task8.setParent(task5);
 
-evManager.newListener('#list-area', 'mouseover', e => {
-    if (e.target.classList.contains('task-label')) {
+$listArea.addEventListener('mouseover', e => {
+    if (e.target.classList.contains('task-label')) {    
         //Cache DOM
         let $label = e.target;
-        let $taskBody = $label.parentNode;
-        let $prevTaskBody = document.querySelector('.editing');
-        let $prevDisplaced = document.querySelector('.displaced');
 
-        //Remove editing class from previous task.
-        if($prevTaskBody) {
-            $prevTaskBody.classList.remove('editing');
-        }
-        //Give class to task being hovered
-        $taskBody.classList.add('editing');
-        //Stick label somewhere else.
-        document.querySelector('body').appendChild($label);
-        //Replace with input
-        $taskBody.appendChild($editBox);
-        //If task label is displaced, replace into previous task body and remove class.
-        if ($prevDisplaced) {
-            $prevTaskBody.appendChild($prevDisplaced);
-            $prevDisplaced.classList.remove('displaced');
+        if (!$newInput) {
+            $newInput = document.createElement('input');
+            $newInput.classList.add('title-editor');
+            $newInput.classList.add('invis');
         }
 
-        //Give class to newly displaced label.
-        $label.classList.add('displaced');
+        $newInput.value = $label.textContent;
+        $label.parentNode.appendChild($newInput);
+    }
+});
 
-        $editBox.value = $label.firstChild.textContent;
+$listArea.addEventListener('click', e => {    
+    if (e.target.classList.contains('title-editor')) {
+        let $input = e.target;
+        let $label = e.target.parentNode.querySelector('.task-label'); 
+
+        //Make all labels visible.
+        let $labels = document.querySelectorAll('.task-label');
+        $labels = nodeListToArray($labels)
+            .map($elem => $elem.classList.remove('invis'));
+
+        //Remove all inputs except current target.
+        let $unusedEditors = document.querySelectorAll('.title-editor');
+        $unusedEditors = nodeListToArray($unusedEditors)
+            .filter($elem => $elem !== $input)
+            .map($elem => $elem.parentNode.removeChild($elem));
+        
+        //Swap visibility of input and label.
+        $input.classList.remove('invis');
+        $label.classList.add('invis');
+        $newInput = null;
     }
 });
 

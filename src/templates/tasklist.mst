@@ -2,14 +2,16 @@
     <li>
         <span class="task-container task">
             <a href="#" class="edit-btn"><i class="far fa-edit icon"></i></a>
-            <span class="task-body" style="padding-left: {{getIndent}}">
+            <span class="task-body" style="margin-left: {{getIndent}}">
                 {{#hasChildren}}
                     <a href="#" class="collapse-btn"><i class="fas fa-angle-down icon"></i></a>
                 {{/hasChildren}}
                 {{^hasChildren}}
                     <a href="#" class="complete-btn"><i class="fas fa-check incomplete icon"></i></a>
                 {{/hasChildren}}
-                <label class="task-label">{{getTitle}}</label>
+                <span class="task-label-container">
+                    <label class="task-label">{{getTitle}}</label>
+                </span>
             </span>
             <a href="#" class="due-btn"><i class="far fa-clock icon"></i></a>
             <a href="#" class="priority-btn"><i class="far fa-lightbulb icon"></i></a>
